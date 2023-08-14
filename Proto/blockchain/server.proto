@@ -1,0 +1,173 @@
+syntax ="proto3";  // 指定使用proto3
+option java_multiple_files = true;  //以非外部类模式生成
+option go_package = "./;blockchain"; // 指定文件生成的位置与包名
+package blockChainGrpc; // 指定包名
+/*
+  protoc --go_out=plugins=grpc:./ *.proto
+*/
+
+// 定义服务
+service BlockChainService{
+  // 数据区块的分发
+  rpc DistributeDataBlock(DataBlock)returns(VerifyInfo){}
+
+  // 数据区块的同步
+  rpc DataBlockSynchronization(ReqDataBlock)returns(ResDataBlocks){}
+
+  // 表区块的分发
+  rpc DistributeTableBlock(TableBlock)returns(VerifyInfo){}
+
+  // 表区块的同步
+  rpc TableBlockSynchronization(ReqTableBlock)returns(ResTableBlocks){}
+
+//  // 心跳检测
+//  rpc NodeHeartbeat(NodeInfo)returns(Heartbeat){}
+//
+//  // 获取记账权
+//  rpc GetAccountant(Heartbeat)returns(VerifyInfo){}
+
+  // 数据交易池
+  rpc DataTradingPool(DataTransaction)returns(VerifyInfo){}
+
+  // 表交易池
+  rpc TableTradingPool(TableTransaction)returns(VerifyInfo){}
+
+  // 数据交易池 多笔交易的处理
+  rpc DataTradingPoolTxs(DataTransactions)returns(VerifyInfo){}
+  // 加入集群
+  rpc JoinCluster(ReqJoin)returns(VerifyInfo){}
+//  rpc JoinCluster(ReqJoin)returns(Nodes){}
+
+   // 向集群中其他节点发送本节点的信息
+  rpc BroadcastNode(NodeInfo)returns(VerifyInfo){}
+
+  rpc Handle(TypAndData)returns(Info){}
+
+//  rpc Time(Times)returns(Info){}
+
+}
+
+//message Times{
+//  int64 time = 1;
+//}
+
+// 数据 交易
+message DataTransaction{
+  bytes TxID = 1; //交易的id
+  bytes DataID = 2; // 数据的唯一标识
+  // 数据信息
+  string Table = 3;
+  string Key = 4;
+  string Value = 5;
+  string Possessor = 6; // 交易所属者
+  int64 TimeStamp = 7;
+  // 验证信息
+  bytes PublicKey = 8; // 公钥
+  bytes Signature = 9; // 签名
+}
+
+// 表 (交易)
+message TableTransaction{
+  bytes TxID = 1;
+  string Table = 2;  //表名
+  repeated string PermissionTables = 3; // 表的权限(为用户地址加权限)
+  string Possessor = 4;
+  int64 TimeStamp = 5;
+  // 验证信息
+  bytes PublicKey = 6;
+  bytes Signature = 7;
+}
+
+// 数据交易
+message DataTransactions{
+  repeated DataTransaction Transactions = 1; // 多个交易
+}
+
+// 表交易
+message TableTransactions{
+  repeated TableTransaction Transactions = 1; // 多个交易
+}
+
+// 数据区块
+message DataBlock{
+  int64 ID = 1;                     //区块的ID
+  bytes CurrentBlockHash = 2;       //当前区块的 HASH
+  bytes PreviousBlockHash = 3;      //上一个区块的 HASH
+  bytes MerKelRoot = 4;             //MerKelRoot MerKelRoot
+  repeated DataTransaction TxInfo = 5;  //区块的所有交易
+  uint64 TimeTamp = 6;              //时间戳
+}
+
+// 表区块
+message TableBlock{
+  int64 ID = 1;                     //区块的ID
+  bytes CurrentBlockHash = 2;       //当前区块的 HASH
+  bytes PreviousBlockHash = 3;      //上一个区块的 HASH
+  bytes MerKelRoot = 4;             //MerKelRoot MerKelRoot
+  repeated TableTransaction TxInfo = 5;  //区块的所有交易
+  uint64 TimeTamp = 6;              //时间戳
+}
+
+message ReqDataBlock{
+  bytes Hash = 1; // 本地最新区块的哈希
+  int64 BlockID = 2; // 最新区块序号
+}
+
+message ResDataBlocks{
+  repeated DataBlock blocks = 1; // 同步过来的区块
+}
+
+message ReqTableBlock{
+  bytes Hash = 1; // 本地最新区块的哈希
+  int64 BlockID = 2; // 最新区块序号
+}
+
+message ResTableBlocks{
+  repeated TableBlock blocks = 1; // 同步过来的区块
+}
+
+
+// 验证信息
+message VerifyInfo{
+  bool status = 1; //状态
+  string info = 2; // 验证信息
+}
+
+message NodeInfo{
+  string LocalIp = 1; // ip号
+  string LocalPort = 2; // 端口号
+}
+
+message Nodes{
+  repeated NodeInfo nodes = 1;
+}
+
+message Heartbeat{
+  bool IsAccountant = 1; // 是否拥有记账权
+  string localIp = 2; //节点的IP
+  int32 localPort = 3; // 节点的端口号
+
+}
+
+message TableName{
+  string name = 1; // 表的名字
+}
+
+// 加入集群提交的请求信息
+message ReqJoin{
+  string localIp = 1; // ip
+  string localPort = 2; // 端口号
+  bytes JoinKey = 3; // 加入集群的密钥
+}
+
+
+// 类型和数据
+message TypAndData{
+  int32 Typ = 1; // 类型
+  bytes Data = 2; // 数据
+}
+// 处理结果
+message Info{
+  bool status = 1; //状态
+  string info = 2; //信息
+}

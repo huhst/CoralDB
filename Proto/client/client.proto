@@ -1,0 +1,43 @@
+syntax ="proto3";  // 指定使用proto3
+option java_multiple_files = true;  //以非外部类模式生成
+option go_package = "./;client"; // 指定文件生成的位置与包名
+package clientGrpc; // 指定包名
+/*
+  protoc --go_out=plugins=grpc:./ *.proto
+*/
+
+// 定义服务
+service ClientService{
+  // 登录
+  rpc Login(LoginMes)returns(VerifyInfo);
+  // 创建表
+  rpc CreatTable(TableInfo)returns(VerifyInfo);
+  // 读
+  rpc Read(ReadInfo)returns(VerifyInfo);
+  // 写
+  rpc Write(WriteInfo)returns(VerifyInfo);
+}
+message VerifyInfo{
+  bool status = 1; //状态
+  string info = 2; // 验证信息
+}
+message LoginMes{
+  string userName = 1;
+  string password = 2;
+}
+message TableInfo{
+  string uid = 1;
+  string tableName = 2;
+  string permission = 3;// 权限
+}
+message ReadInfo{
+  string uid = 1;
+  string tableName = 2;
+  string key = 3;
+}
+message WriteInfo{
+  string uid = 1;
+  string tableName = 2;
+  string key = 3;
+  string value = 4;
+}

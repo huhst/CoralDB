@@ -1,0 +1,75 @@
+syntax = "proto3";
+package grpc;
+option go_package = "../service";
+
+//protoc --go_out=. --go-grpc_out=. *.proto  //Compile file
+//python -m grpc_tools.protoc -I. --python_out=./ --grpc_python_out=./ ./client_service.proto
+
+//Service 服务
+service Server {
+  //Sends a command information 发送命令信息
+  rpc cmd (CommandRequest) returns (CommandReply) {}
+
+  //服务器流
+  rpc StreamServer(StreamReq) returns (stream StreamRes){}
+
+  //客户端流
+  rpc StreamClient(stream StreamReq) returns (StreamRes){}
+
+  //双向流
+  rpc StreamTwo(stream StreamReq) returns (stream StreamRes){}
+}
+
+// The request message containing the command.包含命令的请求消息
+message CommandRequest {
+  //string command = 1;
+  string login_account = 1;
+  string login_password = 2;
+  string register_account = 3;
+  string register_password = 4;
+  string client_ip = 5;
+  string server_password = 6;
+  string search_content = 7;
+  string logout_ing = 8;
+  string tabel_name = 9;
+  string permissionTable = 10;
+  string key = 11;
+  string value = 12;
+  string view_myinfo = 13;
+  string uid = 14;
+  string creat = 15;
+  string creat_password = 16;
+  string join = 17;
+  string join_ip = 18;
+  string join_password = 19;
+  string set = 20;
+  string pkgNum = 21;
+}
+
+// The response message containing the execute results. 包含执行命令结果的响应消息
+message CommandReply {
+  //string executeresult = 1;
+  string login = 1;
+  string register = 2;
+  string server_connect = 3;
+  string search_result = 4;
+  repeated string tabel_names = 5; //字符串数组
+  string uaddress = 6;
+  string value = 7;
+  string tabel_ok = 8;
+  string put_ok = 9;
+  string get_ok = 10;
+  string Logout_ok = 11;
+  string creat_ok = 12;
+  string join_ok = 13;
+}
+
+//流数据请求
+message StreamReq{
+  string data = 1;
+}
+
+//流数据响应
+message StreamRes{
+  string data = 1;
+}

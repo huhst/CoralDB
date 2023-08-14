@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>区块链数据库</title>
+    <style> @import "../static/css/curency.css";</style>
+    <style> @import "../static/css/admin.css";</style>
+    <script src="../static/js/admin.js"> </script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<!--遮盖层-->
+<div id="popLayer"></div>
+<div class="head">
+    <div class="head_img">
+    </div>
+    <div class="title">
+        <P>后台管理系统</P>
+    </div>
+    <div class="time"></div>
+    <div class="user_btn">
+        <ul class="btu_ul">
+        </ul>
+    </div>
+</div>
+<div class="mid">
+    <div class="left">
+        <ul class="nav" id="side-menu">
+            <li class="i1"><a href="admin">主页</a></li>
+            <li><a href="javascript:void(0)" onclick="adduser()">添加用户</a></li>
+            <li><a href="javascript:void(0)" onclick="creatCluster()">创建集群</a></li>
+            <li><a href="javascript:void(0)" onclick="joinCluster()">加入集群</a></li>
+            <li><a href="javascript:void(0)" onclick="setNum()">设置打包数</a></li>
+        </ul>
+    </div>
+    <div class="right">
+        <div class="head_bgr">
+            <div class="head_info">
+                <p style="font-size: 20px;font-weight: bold">系统信息:</p>
+            </div>
+            <br>
+            <table id="Table" class="Table" style="width:100%; border:0;" >
+                <thead style="font-weight: bold">
+                <tr>
+                    <td style="width: 20%;">用户数量</td>
+                    <td style="width: 20%;">节点ip</td>
+                    <td style="width: 20%;">服务节点个数</td>
+                    <td style="width: 20%;">最新区块id</td>
+                    <td style="width: 20%;">最新区块hash</td>
+                </tr>
+                </thead>
+                <tbody id="listTable">
+                <tr>
+                    <td>{{.userSum}}</td>
+                    <td>{{.serverIp}}</td>
+                    <td>{{.serverSum}}</td>
+                    <td>{{.newBlockId}}</td>
+                    <td>{{.newBlockHash}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<div id="popBox">
+    <div class="close">
+        <a href="javascript:void(0)" onclick="closeBox()">关闭</a>
+    </div>
+    <!--                    弹出层-->
+    <div class="content">
+        <label for="in1" id = "in1_for"> </label>
+        <input id = "in1" type="text">
+        <br>
+        <label for="in2"id = "in2_for"> </label>
+        <input id = "in2" type="text">
+        <br>
+        <label for="in3"id = "in3_for"> </label>
+        <input id = "in3" type="text">
+    </div>
+    <button id="up" class="Submit" onclick="index_save();">提交</button>
+    <button id="up1" class="Submit" onclick="index_save1();">提交</button>
+    <button id="up2" class="Submit" onclick="index_save2();">提交</button>
+    <button id="up3" class="Submit" onclick="index_save3();">提交</button>
+</div>
+</body>
+<script src="../static/js/currency.js"></script>
+</html>

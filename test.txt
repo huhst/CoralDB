@@ -1,0 +1,12 @@
+
+
+
+
+
+creat 123
+join 192.168.1.101 3301 123
+
+login a a
+u_in a a
+table aa 1FYrDeBmc1yLUkTFuJEtjFpRjjhWQdqspE4
+put a a aa

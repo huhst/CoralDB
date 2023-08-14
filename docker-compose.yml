@@ -1,0 +1,297 @@
+version: '3'
+
+services:
+  node0:
+    container_name: algdb0
+    image: "yan259128/algdb"
+    ports:
+      - "3301-3304:3301-3304"
+      - "8888:8888"
+      - "8080:8080"
+    command: /bin/bash -c "cd /home && ./start_server"
+    networks:
+      localnet:
+        ipv4_address: 192.169.10.2
+        
+  node1:
+    container_name: algdb1
+    image: "yan259128/algdb"
+    ports:
+      - "3401-3404:3301-3304"
+      - "8988:8888"
+      - "8180:8080"
+    command: /bin/bash -c "cd /home && ./start_server"
+    networks:
+      localnet:
+        ipv4_address: 192.169.10.3
+  node2:
+    container_name: algdb2
+    image: "yan259128/algdb"
+    ports:
+      - "3501-3504:3301-3304"
+      - "9088:8888"
+      - "8280:8080"
+    command: /bin/bash -c "cd /home && ./start_server"
+    networks:
+      localnet:
+        ipv4_address: 192.169.10.4
+
+  node3:
+    container_name: algdb3
+    image: "yan259128/algdb"
+    ports:
+      - "3601-3604:3301-3304"
+      - "9188:8888"
+      - "8380:8080"
+    command: /bin/bash -c "cd /home && ./start_server"
+    networks:
+      localnet:
+        ipv4_address: 192.169.10.5
+#
+#  node4:
+#    container_name: algdb4
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "3701-3704:3301-3304"
+#      - "9288:8888"
+#      - "8480:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.6
+#  node5:
+#    container_name: algdb5
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "3801-3804:3301-3304"
+#      - "9388:8888"
+#      - "8580:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.7
+#  node6:
+#    container_name: algdb6
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "3901-3904:3301-3304"
+#      - "9488:8888"
+#      - "8680:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.8
+#  node7:
+#    container_name: algdb7
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "4001-4004:3301-3304"
+#      - "9588:8888"
+#      - "8780:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.9
+#
+#  node8:
+#    container_name: algdb8
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "4101-4104:3301-3304"
+#      - "9688:8888"
+#      - "8880:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.10
+#
+#  node9:
+#    container_name: algdb9
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "4201-4204:3301-3304"
+#      - "9788:8888"
+#      - "8980:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.11
+#
+#  node10:
+#    container_name: algdb10
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "4301-4304:3301-3304"
+#      - "9888:8888"
+#      - "9080:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.12
+#  node11:
+#    container_name: algdb11
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "4401-4404:3301-3304"
+#      - "9988:8888"
+#      - "9180:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.13
+#
+#  node12:
+#    container_name: algdb12
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "4501-4504:3301-3304"
+#      - "10088:8888"
+#      - "9280:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.14
+#
+#  node13:
+#    container_name: algdb13
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "4601-4604:3301-3304"
+#      - "10188:8888"
+#      - "9380:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.15
+#
+#  node14:
+#    container_name: algdb14
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "4701-4704:3301-3304"
+#      - "10288:8888"
+#      - "9480:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.16
+#
+#  node15:
+#    container_name: algdb15
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "4801-4804:3301-3304"
+#      - "10388:8888"
+#      - "9580:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.17
+#  node16:
+#    container_name: algdb16
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "4901-4904:3301-3304"
+#      - "10488:8888"
+#      - "9680:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.18
+#  node17:
+#    container_name: algdb17
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "5001-5004:3301-3304"
+#      - "10588:8888"
+#      - "9780:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.19
+#  node18:
+#    container_name: algdb18
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "5101-5104:3301-3304"
+#      - "10688:8888"
+#      - "9880:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.20
+#  node19:
+#    container_name: algdb19
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "5201-5204:3301-3304"
+#      - "10788:8888"
+#      - "9980:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.21
+#  node20:
+#    container_name: algdb20
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "5301-5304:3301-3304"
+#      - "10888:8888"
+#      - "10080:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.22
+#  node21:
+#    container_name: algdb21
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "5401-5404:3301-3304"
+#      - "10988:8888"
+#      - "10180:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.23
+#  node22:
+#    container_name: algdb22
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "5501-5504:3301-3304"
+#      - "11088:8888"
+#      - "10280:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.24
+#  node23:
+#    container_name: algdb23
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "5601-5604:3301-3304"
+#      - "11188:8888"
+#      - "10380:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.25
+#  node24:
+#    container_name: algdb24
+#    image: "yan259128/CoralDB"
+#    ports:
+#      - "5701-5704:3301-3304"
+#      - "11288:8888"
+#      - "10480:8080"
+#    command: /bin/bash -c "cd /home && ./start_server"
+#    networks:
+#      localnet:
+#        ipv4_address: 192.169.10.26
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 192.169.10.0/16
+

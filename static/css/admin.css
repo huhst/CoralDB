@@ -1,0 +1,45 @@
+/*左侧页面*/
+.i1{
+    background-color: deepskyblue;
+}
+
+/*右侧页面*/
+
+.head_bgr{
+    background-color:#d6e8fc;
+    position: absolute;
+    height: 9%;
+    width: 100%;
+}
+.head_info{
+    position: relative;
+    top: -10%;
+}
+
+.mid_table_head{
+    position: absolute;
+    top:10%;
+    width: 100%;
+}
+.mid_table_info{
+    position: absolute;
+    top:13%;
+    width: 100%;
+}
+
+
+/*表格*/
+
+.Table tr td{
+    height: 40px;
+}
+
+table
+{
+    border-collapse:collapse;
+}
+
+table, td, th
+{
+    border:1px solid black;
+}

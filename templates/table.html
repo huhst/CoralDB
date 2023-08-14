@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>区块链数据库</title>
+    <style> @import "../static/css/curency.css";</style>
+    <style> @import "../static/css/admin.css";</style>
+    <style> @import "../static/css/table.css";</style>
+    <script src="../static/js/table.js"> </script>
+    <script src="../static/js/user.js"> </script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<!--遮盖层-->
+<div id="popLayer"></div>
+<div class="head">
+    <div class="head_img">
+        <img src="../static/img/head_img.jpg" alt="Smiley face">
+        <div class="username">
+            <p id="userName">{{.UserName}}</p>
+        </div>
+    </div>
+    <div class="title">
+        <P>用户界面</P>
+        <p style="display: none" id="power">{{.Power}}</p>
+    </div>
+    <div class="time"></div>
+    <div class="user_btn">
+        <ul class="btu_ul">
+            <li>
+                <a href="javascript:void(0)" onclick="connectServer()">
+                    <span>连接服务器</span>
+                </a>
+            </li>
+            <li>|</li>
+            <li>
+                <a href="javascript:void(0)" onclick="closeServer()">
+                    <span>断开连接</span>
+                </a>
+            </li>
+            <li>|</li>
+            <li>
+                <a href="javascript:void(0)" onclick="login()">
+                    <span>用户登录</span>
+                </a>
+            </li>
+            <li>|</li>
+            <li>
+                <a href="javascript:void(0)" onclick="exit()">
+                    <span>用户退出</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="mid">
+    <div class="left">
+        <ul class="nav" id="side-menu">
+            <li><a href="user">主页</a></li>
+            <li><a href="javascript:void(0)" onclick="creatTable()">创建共享表</a></li>
+            <li><a href="javascript:void(0)" onclick="modifyTable()">修改共享表</a></li>
+            <li class="i1"><a href="table">已创建的表</a></li>
+            <li><a href="javascript:void(0)" onclick="addDates()">添加数据</a></li>
+            <li><a href="javascript:void(0)" onclick="modifyDates()">修改数据</a></li>
+            <li><a href="data" >查询数据</a></li>
+        </ul>
+    </div>
+    <div class="right">
+        <div class="head_bgr">
+            <div class="head_info">
+                <button id="table_btn" class="table_btn" onclick="tables()">获取信息</button>
+                <p>已创建的表:</p>
+            </div>
+            <table id="Table" class="Table" style="width:100%; border:0;">
+                <thead style="font-weight: bold">
+                <tr style="background-color: beige;">
+                    <td style="width: 25%">共享表表名</td>
+                    <td style="width: 25%">权限等级</td>
+                    <td style="width: 25%">权限</td>
+                    <td style="width: 25%">创建者</td>
+                </tr>
+                </thead>
+                <tbody id="listTable1"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<div id="popBox">
+    <div class="close">
+        <a href="javascript:void(0)" onclick="closeBox()">关闭</a>
+    </div>
+    <!--                    弹出层-->
+    <div class="content">
+        <label for="in1" id = "in1_for"> </label>
+        <input id = "in1" type="text">
+        <br>
+        <label for="in2"id = "in2_for"> </label>
+        <input id = "in2" type="text">
+        <br>
+        <label for="in3"id = "in3_for"> </label>
+        <input id = "in3" type="text">
+    </div>
+    <button id="up" class="Submit" onclick="user_save();">提交</button>
+    <button id="up1" class="Submit" onclick="user_save1();">提交</button>
+    <button id="up2" class="Submit" onclick="user_save2();">提交</button>
+    <button id="up3" class="Submit" onclick="user_save3();">提交</button>
+    <button id="up4" class="Submit" onclick="user_save4();">提交</button>
+    <button id="up5" class="Submit" onclick="user_save5();">提交</button>
+</div>
+</body>
+<script src="../static/js/currency.js"></script>
+</html>

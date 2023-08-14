@@ -1,0 +1,55 @@
+/*左侧页面*/
+.i4{
+    background-color: deepskyblue;
+}
+/*右侧页面*/
+.head_bgr{
+    background-color:#d6e8fc;
+    position: absolute;
+    height: 10%;
+    width: 100%;
+}
+.head_info{
+    position: absolute;
+}
+
+.head_list{
+    position: absolute;
+    top:35%;
+    left: 15%;
+    width: 100%;
+}
+
+.head_but1{
+    position: absolute;
+    top: 50%;
+}
+
+.head_but{
+    position:absolute;
+    top: 35%;
+    left: 80%;
+}
+
+.mid_info{
+    position: absolute;
+    top: 11%;
+    width: 100%;
+}
+
+/*表格*/
+
+.Table tr td{
+    height: 40px;
+}
+
+table
+{
+    border-collapse:collapse;
+}
+
+table, td, th
+{
+    border:1px solid black;
+}
+
